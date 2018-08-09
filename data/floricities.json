@@ -1,0 +1,54 @@
+{
+    "Florianópolis": {
+        "location": [27.5949, 48.5482],
+        "neighbours": ["São José"]
+    },
+    "São José": {
+        "location": [27.6141, 48.6371],
+        "neighbours": ["Florianópolis", "Palhoça", "Biguaçú", "Antônio Carlos"]
+    },
+    "Palhoça": {
+        "location": [27.6464, 48.6719],
+        "neighbours": ["São José"]
+    },
+    "Balneário Camboriú": {
+        "location": [27.0016, 48.6379],
+        "neighbours": ["Itajaí", "Tijucas"]
+    },
+    "Blumenau": {
+        "location": [26.9166, 49.0717],
+        "neighbours": ["Gaspar", "Brusque"]
+    },
+    "Gaspar": {
+        "location": [26.9341, 48.9539],
+        "neighbours": ["Ilhota", "Blumenau", "Brusque"]
+    },
+    "Ilhota": {
+        "location": [26.9012, 48.8285],
+        "neighbours": ["Itajaí", "Gaspar"]
+    },
+    "Itajaí": {
+        "location": [26.9106, 48.6710],
+        "neighbours": ["Ilhota", "Brusque", "Balneário Camboriú"]
+    },
+    "Brusque": {
+        "location": [27.0982, 48.9111],
+        "neighbours": ["Gaspar", "Itajaí", "Nova Trento", "Blumenau"]
+    },
+    "Nova Trento": {
+        "location": [27.2836, 48.9168],
+        "neighbours": ["Brusque", "Tijucas"]
+    },
+    "Tijucas": {
+        "location": [27.2401, 48.6336],
+        "neighbours": ["Nova Trento", "Biguaçú", "Balneário Camboriú"]
+    },
+    "Biguaçú": {
+        "location": [27.4956, 48.6554],
+        "neighbours": ["Antônio Carlos", "São José", "Tijucas"]
+    },
+    "Antônio Carlos": {
+        "location": [27.5179, 48.7684],
+        "neighbours": ["Biguaçú", "São José"]
+    }
+}
