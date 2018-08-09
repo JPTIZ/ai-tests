@@ -1,34 +1,36 @@
-#[macro_use]
-extern crate serde_derive;
-extern crate serde_json;
 extern crate exitfailure;
 extern crate failure;
 
+#[macro_use]
+extern crate serde_derive;
+extern crate serde_json;
+
+#[macro_use]
+extern crate structopt;
+
 use exitfailure::ExitFailure;
-use failure::ResultExt;
-use std::{collections::HashMap, env, fs};
+use std::path::PathBuf;
+use structopt::StructOpt;
 
-#[derive(Deserialize, Debug)]
-struct City {
-    location: (f64, f64),
-    neighbours: Vec<String>,
-}
+mod cities;
 
-#[derive(Deserialize, Debug)]
-struct Data(HashMap<String, City>);
-
-fn load_cities(path: &str) -> Result<Data, failure::Error> {
-    let contents = fs::read_to_string(path).context(path.to_string())?;
-
-    let cities = serde_json::from_str(&contents)?;
-
-    Ok(cities)
+#[derive(StructOpt, Debug)]
+#[structopt(name = "wee", about = "Heuristics tests for paths through cities.")]
+struct Args {
+    #[structopt(parse(from_os_str))]
+    filename: PathBuf,
 }
 
 fn main() -> Result<(), ExitFailure> {
-    let path = env::args().nth(1).unwrap();
+    let args = Args::from_args();
 
-    let contents = load_cities(&path)?;
+    let contents = cities::from_file(
+        &args
+            .filename
+            .into_os_string()
+            .into_string()
+            .expect("Valid filename"),
+    )?;
     println!("File contents:\n{:?}", contents);
 
     Ok(())
